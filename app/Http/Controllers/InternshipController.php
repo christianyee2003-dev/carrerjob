@@ -9,7 +9,9 @@ class InternshipController extends Controller
     // All internship data keyed by slug
     public static function all(): array
     {
-        return [
+        // Merge static internships + admin-posted internships from session
+        $adminInternships = session('admin_internships', []);
+        return array_merge([
             'google' => [
                 'slug'            => 'google',
                 'company'         => 'Google',
@@ -202,7 +204,7 @@ class InternshipController extends Controller
                 ],
                 'benefits'        => ['Full remote work', 'Netflix subscription', 'Learning stipend', 'Flexible hours', 'Mentorship from data scientists'],
             ],
-        ];
+        ] + $adminInternships);
     }
 
     public function index()

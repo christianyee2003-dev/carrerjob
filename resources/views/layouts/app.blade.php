@@ -61,6 +61,16 @@
                         <i class="fas fa-th-large"></i><span>Dashboard</span>
                     </a>
 
+                    @if(session('user.role') === 'superadmin')
+                    <a href="{{ route('superadmin.dashboard') }}" class="btn btn-warning btn-sm rounded-pill px-3 d-none d-md-inline-flex align-items-center gap-1">
+                        <i class="fas fa-crown"></i><span>Super Admin</span>
+                    </a>
+                    @elseif(session('user.role') === 'admin')
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-warning btn-sm rounded-pill px-3 d-none d-md-inline-flex align-items-center gap-1">
+                        <i class="fas fa-shield-alt"></i><span>Admin Panel</span>
+                    </a>
+                    @endif
+
                     <div class="dropdown">
                         <button class="btn btn-primary btn-sm rounded-pill px-3 dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown">
                             <div class="avatar-xs">{{ strtoupper(substr(session('user.name'), 0, 1)) }}</div>

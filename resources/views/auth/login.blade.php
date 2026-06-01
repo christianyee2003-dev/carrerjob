@@ -62,7 +62,7 @@
                         Don't have an account? <a href="{{ route('register') }}" class="text-primary fw-semibold text-decoration-none">Sign Up Free</a>
                     </p>
 
-                    
+                   
                 </div>
             </div>
 

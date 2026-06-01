@@ -11,9 +11,7 @@
                 <div class="d-flex align-items-center gap-3">
                     <div class="avatar-lg">{{ strtoupper(substr(session('user.name', 'G'), 0, 1)) }}</div>
                     <div>
-                        <p class="text-white opacity-75 mb-0 small">
-                            Good {{ date('H') < 12 ? 'Morning' : (date('H') < 17 ? 'Afternoon' : 'Evening') }} 👋
-                        </p>
+                        
                         <h4 class="fw-bold text-white mb-0">{{ session('user.name', 'Guest') }}</h4>
                         <span class="badge bg-white bg-opacity-25 text-white rounded-pill mt-1">
                             <i class="fas fa-{{ session('user.role') === 'employer' ? 'building' : 'graduation-cap' }} me-1"></i>
@@ -56,6 +54,25 @@
         @endforeach
     </div>
 
+    {{-- Recommended Jobs --}}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <span class="section-label">Full-time</span>
+            <h5 class="fw-bold mb-0">Recommended Jobs</h5>
+            <p class="text-muted small mb-0">Full-time positions for you</p>
+        </div>
+        <a href="{{ route('jobs') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+            View All <i class="fas fa-arrow-right ms-1"></i>
+        </a>
+    </div>
+    <div class="row g-4">
+        @foreach($recommendedJobs as $job)
+        <div class="col-md-6 col-lg-4">
+            @include('partials.job-card', ['job' => $job])
+        </div>
+        @endforeach
+    </div>
+    
     {{-- Stats --}}
     <div class="row g-3 mb-5">
         @foreach([
@@ -97,25 +114,6 @@
                 </div>
                 <div class="fw-semibold small text-dark">{{ $qa['label'] }}</div>
             </a>
-        </div>
-        @endforeach
-    </div>
-
-    {{-- Recommended Jobs --}}
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <span class="section-label">Full-time</span>
-            <h5 class="fw-bold mb-0">Recommended Jobs</h5>
-            <p class="text-muted small mb-0">Full-time positions for you</p>
-        </div>
-        <a href="{{ route('jobs') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
-            View All <i class="fas fa-arrow-right ms-1"></i>
-        </a>
-    </div>
-    <div class="row g-4">
-        @foreach($recommendedJobs as $job)
-        <div class="col-md-6 col-lg-4">
-            @include('partials.job-card', ['job' => $job])
         </div>
         @endforeach
     </div>

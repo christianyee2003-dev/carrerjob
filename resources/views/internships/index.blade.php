@@ -34,7 +34,10 @@
                     <input type="text" name="search" class="form-control border-start-0" placeholder="Search by company, title, or skill...">
                 </div>
             </div>
-            
+            <div class="col-md-4 d-flex gap-2">
+                <button type="submit" class="btn btn-primary rounded-pill flex-grow-1">Search</button>
+                <a href="{{ route('internships') }}" class="btn btn-outline-secondary rounded-pill px-3">Reset</a>
+            </div>
         </form>
     </div>
 
